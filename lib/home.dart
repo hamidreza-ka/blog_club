@@ -98,6 +98,7 @@ class _CategoryList extends StatelessWidget {
           disableCenter: true,
           enableInfiniteScroll: false,
           enlargeCenterPage: true,
+          autoPlay: false,
           enlargeStrategy: CenterPageEnlargeStrategy.height),
     );
   }

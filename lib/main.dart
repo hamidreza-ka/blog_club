@@ -1,6 +1,5 @@
 import 'package:blog_club/gen/fonts.gen.dart';
 import 'package:blog_club/splash.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -17,14 +16,22 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final primaryTextColor = Color(0xff0D253C);
-    final secondaryTextColor = Color(0xff2d4379);
+    const primaryColor = Color(0xff376aed);
+    const primaryTextColor = Color(0xff0D253C);
+    const secondaryTextColor = Color(0xff2d4379);
 
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        colorScheme: const ColorScheme.light(
+          primary: primaryColor,
+          onPrimary: Colors.white,
+          surface: Colors.white,
+          onSurface: primaryTextColor,
+          background: Color(0xfffbfcff),
+          onBackground: primaryTextColor,
+        ),
         textButtonTheme: TextButtonThemeData(
           style: ButtonStyle(
             textStyle: MaterialStateProperty.all(

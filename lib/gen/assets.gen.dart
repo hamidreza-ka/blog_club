@@ -5,7 +5,6 @@
 
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter/services.dart';
 
 class $AssetsImgGen {
   const $AssetsImgGen();
@@ -19,6 +18,8 @@ class $AssetsImgGen {
 class $AssetsImgBackgroundGen {
   const $AssetsImgBackgroundGen();
 
+  AssetGenImage get onboardingImages =>
+      const AssetGenImage('assets/img/background/onboarding_images.png');
   AssetGenImage get splashBackground =>
       const AssetGenImage('assets/img/background/splash_background.png');
 }

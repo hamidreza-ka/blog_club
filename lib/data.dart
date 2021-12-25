@@ -41,6 +41,16 @@ class PostData {
       required this.imageFileName});
 }
 
+class OnBoardingData {
+  final String title;
+  final String description;
+
+  OnBoardingData({
+    required this.title,
+    required this.description,
+  });
+}
+
 class AppDatabase {
   static List<StoryData> get stories {
     return [
@@ -142,4 +152,27 @@ class AppDatabase {
           imageFileName: 'small_post_3.jpg'),
     ];
   }
+
+  static final List<OnBoardingData> onBoardingItems = [
+    OnBoardingData(
+      title: 'Read the article you want instantly',
+      description:
+          'You can read thousands of articles on Blog Club, save them in the application and share them with your loved ones.',
+    ),
+    OnBoardingData(
+      title: 'Read the article you want instantly',
+      description:
+          'You can read thousands of articles on Blog Club, save them in the application and share them with your loved ones.',
+    ),
+    OnBoardingData(
+      title: 'Read the article you want instantly',
+      description:
+          'You can read thousands of articles on Blog Club, save them in the application and share them with your loved ones.',
+    ),
+    OnBoardingData(
+      title: 'Read the article you want instantly',
+      description:
+          'You can read thousands of articles on Blog Club, save them in the application and share them with your loved ones.',
+    ),
+  ];
 }

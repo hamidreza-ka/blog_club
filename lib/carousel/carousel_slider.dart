@@ -2,7 +2,6 @@ library carousel_slider;
 
 import 'dart:async';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -265,6 +264,7 @@ class CarouselSliderState extends State<CarouselSlider>
   @override
   Widget build(BuildContext context) {
     return getGestureWrapper(PageView.builder(
+      padEnds: false,
       physics: widget.options.scrollPhysics,
       scrollDirection: widget.options.scrollDirection,
       pageSnapping: widget.options.pageSnapping,
