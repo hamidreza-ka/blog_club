@@ -1,5 +1,5 @@
+import 'package:blog_club/article.dart';
 import 'package:blog_club/gen/fonts.gen.dart';
-import 'package:blog_club/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -32,6 +32,11 @@ class MyApp extends StatelessWidget {
           background: Color(0xfffbfcff),
           onBackground: primaryTextColor,
         ),
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.white,
+          foregroundColor: primaryTextColor,
+          titleSpacing: 32,
+        ),
         textButtonTheme: TextButtonThemeData(
           style: ButtonStyle(
             textStyle: MaterialStateProperty.all(
@@ -42,6 +47,9 @@ class MyApp extends StatelessWidget {
               ),
             ),
           ),
+        ),
+        snackBarTheme: const SnackBarThemeData(
+          backgroundColor: primaryColor,
         ),
         textTheme: TextTheme(
           caption: TextStyle(
@@ -96,7 +104,7 @@ class MyApp extends StatelessWidget {
       //     ),
       //   ],
       // ),
-      home: SplashScreen(),
+      home: ArticleScreen(),
     );
   }
 }

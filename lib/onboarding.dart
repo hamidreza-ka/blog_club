@@ -1,9 +1,9 @@
 // ignore: unused_import, avoid_web_libraries_in_flutter
 import 'dart:js';
 
+import 'package:blog_club/auth.dart';
 import 'package:blog_club/data.dart';
 import 'package:blog_club/gen/assets.gen.dart';
-import 'package:blog_club/home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -131,7 +131,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                             if (page == onboardingItems.length - 1)
                               Navigator.pushReplacement(
                                 context,
-                                MaterialPageRoute(builder: (context) => Home()),
+                                MaterialPageRoute(builder: (context) => AuthScreen()),
                               );
                             else
                               _pageController.animateToPage(

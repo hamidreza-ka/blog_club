@@ -3,8 +3,11 @@
 ///  FlutterGen
 /// *****************************************************
 
+// ignore_for_file: directives_ordering,unnecessary_import
+
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter/services.dart';
 
 class $AssetsImgGen {
   const $AssetsImgGen();
@@ -18,8 +21,15 @@ class $AssetsImgGen {
 class $AssetsImgBackgroundGen {
   const $AssetsImgBackgroundGen();
 
+  /// File path: assets/img/background/onboarding_images.png
   AssetGenImage get onboardingImages =>
       const AssetGenImage('assets/img/background/onboarding_images.png');
+
+  /// File path: assets/img/background/single_post.png
+  AssetGenImage get singlePost =>
+      const AssetGenImage('assets/img/background/single_post.png');
+
+  /// File path: assets/img/background/splash_background.png
   AssetGenImage get splashBackground =>
       const AssetGenImage('assets/img/background/splash_background.png');
 }
@@ -27,24 +37,60 @@ class $AssetsImgBackgroundGen {
 class $AssetsImgIconsGen {
   const $AssetsImgIconsGen();
 
+  /// File path: assets/img/icons/Articles.png
   AssetGenImage get articles =>
       const AssetGenImage('assets/img/icons/Articles.png');
+
+  /// File path: assets/img/icons/Home.png
   AssetGenImage get home => const AssetGenImage('assets/img/icons/Home.png');
+
+  /// File path: assets/img/icons/LOGO.svg
   SvgGenImage get logo => const SvgGenImage('assets/img/icons/LOGO.svg');
+
+  /// File path: assets/img/icons/Menu.png
   AssetGenImage get menu => const AssetGenImage('assets/img/icons/Menu.png');
+
+  /// File path: assets/img/icons/Search.png
   AssetGenImage get search =>
       const AssetGenImage('assets/img/icons/Search.png');
+
+  /// File path: assets/img/icons/Thumbs.svg
+  SvgGenImage get thumbs => const SvgGenImage('assets/img/icons/Thumbs.svg');
+
+  /// File path: assets/img/icons/category_1.png
   AssetGenImage get category1 =>
       const AssetGenImage('assets/img/icons/category_1.png');
+
+  /// File path: assets/img/icons/category_2.png
   AssetGenImage get category2 =>
       const AssetGenImage('assets/img/icons/category_2.png');
+
+  /// File path: assets/img/icons/category_3.png
   AssetGenImage get category3 =>
       const AssetGenImage('assets/img/icons/category_3.png');
+
+  /// File path: assets/img/icons/category_4.png
   AssetGenImage get category4 =>
       const AssetGenImage('assets/img/icons/category_4.png');
+
+  /// File path: assets/img/icons/dribble.png
+  AssetGenImage get dribble =>
+      const AssetGenImage('assets/img/icons/dribble.png');
+
+  /// File path: assets/img/icons/facebook.png
+  AssetGenImage get facebook =>
+      const AssetGenImage('assets/img/icons/facebook.png');
+
+  /// File path: assets/img/icons/notification.png
   AssetGenImage get notification =>
       const AssetGenImage('assets/img/icons/notification.png');
+
+  /// File path: assets/img/icons/plus.png
   AssetGenImage get plus => const AssetGenImage('assets/img/icons/plus.png');
+
+  /// File path: assets/img/icons/twitter.png
+  AssetGenImage get twitter =>
+      const AssetGenImage('assets/img/icons/twitter.png');
 }
 
 class $AssetsImgPostsGen {
@@ -57,24 +103,43 @@ class $AssetsImgPostsGen {
 class $AssetsImgStoriesGen {
   const $AssetsImgStoriesGen();
 
+  /// File path: assets/img/stories/story_1.jpg
   AssetGenImage get story1 =>
       const AssetGenImage('assets/img/stories/story_1.jpg');
+
+  /// File path: assets/img/stories/story_10.jpg
   AssetGenImage get story10 =>
       const AssetGenImage('assets/img/stories/story_10.jpg');
+
+  /// File path: assets/img/stories/story_2.jpg
   AssetGenImage get story2 =>
       const AssetGenImage('assets/img/stories/story_2.jpg');
+
+  /// File path: assets/img/stories/story_3.jpg
   AssetGenImage get story3 =>
       const AssetGenImage('assets/img/stories/story_3.jpg');
+
+  /// File path: assets/img/stories/story_4.jpg
   AssetGenImage get story4 =>
       const AssetGenImage('assets/img/stories/story_4.jpg');
+
+  /// File path: assets/img/stories/story_5.jpg
   AssetGenImage get story5 =>
       const AssetGenImage('assets/img/stories/story_5.jpg');
+
+  /// File path: assets/img/stories/story_6.jpg
   AssetGenImage get story6 =>
       const AssetGenImage('assets/img/stories/story_6.jpg');
+
+  /// File path: assets/img/stories/story_7.jpg
   AssetGenImage get story7 =>
       const AssetGenImage('assets/img/stories/story_7.jpg');
+
+  /// File path: assets/img/stories/story_8.jpg
   AssetGenImage get story8 =>
       const AssetGenImage('assets/img/stories/story_8.jpg');
+
+  /// File path: assets/img/stories/story_9.jpg
   AssetGenImage get story9 =>
       const AssetGenImage('assets/img/stories/story_9.jpg');
 }
@@ -82,16 +147,27 @@ class $AssetsImgStoriesGen {
 class $AssetsImgPostsLargeGen {
   const $AssetsImgPostsLargeGen();
 
+  /// File path: assets/img/posts/large/large_post_1.jpg
   AssetGenImage get largePost1 =>
       const AssetGenImage('assets/img/posts/large/large_post_1.jpg');
+
+  /// File path: assets/img/posts/large/large_post_2.jpg
   AssetGenImage get largePost2 =>
       const AssetGenImage('assets/img/posts/large/large_post_2.jpg');
+
+  /// File path: assets/img/posts/large/large_post_3.jpg
   AssetGenImage get largePost3 =>
       const AssetGenImage('assets/img/posts/large/large_post_3.jpg');
+
+  /// File path: assets/img/posts/large/large_post_4.jpg
   AssetGenImage get largePost4 =>
       const AssetGenImage('assets/img/posts/large/large_post_4.jpg');
+
+  /// File path: assets/img/posts/large/large_post_5.jpg
   AssetGenImage get largePost5 =>
       const AssetGenImage('assets/img/posts/large/large_post_5.jpg');
+
+  /// File path: assets/img/posts/large/large_post_6.jpg
   AssetGenImage get largePost6 =>
       const AssetGenImage('assets/img/posts/large/large_post_6.jpg');
 }
@@ -99,12 +175,19 @@ class $AssetsImgPostsLargeGen {
 class $AssetsImgPostsSmallGen {
   const $AssetsImgPostsSmallGen();
 
+  /// File path: assets/img/posts/small/small_post_1.jpg
   AssetGenImage get smallPost1 =>
       const AssetGenImage('assets/img/posts/small/small_post_1.jpg');
+
+  /// File path: assets/img/posts/small/small_post_2.jpg
   AssetGenImage get smallPost2 =>
       const AssetGenImage('assets/img/posts/small/small_post_2.jpg');
+
+  /// File path: assets/img/posts/small/small_post_3.jpg
   AssetGenImage get smallPost3 =>
       const AssetGenImage('assets/img/posts/small/small_post_3.jpg');
+
+  /// File path: assets/img/posts/small/small_post_4.jpg
   AssetGenImage get smallPost4 =>
       const AssetGenImage('assets/img/posts/small/small_post_4.jpg');
 }
