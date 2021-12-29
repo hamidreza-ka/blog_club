@@ -2,7 +2,7 @@ import 'package:blog_club/article.dart';
 import 'package:blog_club/gen/fonts.gen.dart';
 import 'package:blog_club/home.dart';
 import 'package:blog_club/profile.dart';
-import 'package:blog_club/search.dart';
+import 'package:blog_club/simple.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -134,35 +134,87 @@ const double bottomNavigationHeight = 65;
 class _MainScreeenState extends State<MainScreeen> {
   int selectedTabIndex = homeIndex;
 
+  GlobalKey<NavigatorState> _homeGlobalKey = GlobalKey();
+  GlobalKey<NavigatorState> _articleGlobalKey = GlobalKey();
+  GlobalKey<NavigatorState> _searchGlobalKey = GlobalKey();
+  GlobalKey<NavigatorState> _menuGlobalKey = GlobalKey();
+
+  final List<int> _selectedTabHistory = [];
+
+  late final map = {
+    homeIndex: _homeGlobalKey,
+    articleIndex: _articleGlobalKey,
+    searchIndex: _searchGlobalKey,
+    menuIndex: _menuGlobalKey,
+  };
+
+  Future<bool> _onWillPop() async {
+    final NavigatorState currentSelectedTabNavigatorState =
+        map[selectedTabIndex]!.currentState!;
+
+    if (currentSelectedTabNavigatorState.canPop()) {
+      currentSelectedTabNavigatorState.pop();
+      return false;
+    } else if (_selectedTabHistory.isNotEmpty) {
+      setState(() {
+        selectedTabIndex = _selectedTabHistory.last;
+        _selectedTabHistory.removeLast();
+      });
+      return false;
+    }
+    return true;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: [
-          Positioned.fill(
-            bottom: bottomNavigationHeight,
-            child: IndexedStack(
-              index: selectedTabIndex,
-              children: [
-                HomeScreen(),
-                ArticleScreen(),
-                SearchScreen(),
-                ProfileScreen(),
-              ],
+    return WillPopScope(
+      onWillPop: _onWillPop,
+      child: Scaffold(
+        body: Stack(
+          children: [
+            Positioned.fill(
+              bottom: bottomNavigationHeight,
+              child: IndexedStack(
+                index: selectedTabIndex,
+                children: [
+                  _navigator(_homeGlobalKey, homeIndex, const HomeScreen()),
+                  _navigator(_articleGlobalKey, articleIndex, ArticleScreen()),
+                  _navigator(_searchGlobalKey, searchIndex, SimpleScreen(tabName: 'Search',)),
+                  _navigator(_menuGlobalKey, menuIndex, ProfileScreen()),
+                ],
+              ),
             ),
-          ),
-          Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            child: _BottomNavigation(
-              onItemTap: (index) => setState(() => selectedTabIndex = index),
-              selectedIndex: selectedTabIndex,
+            Positioned(
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: _BottomNavigation(
+                onItemTap: (index) => setState(() {
+                  _selectedTabHistory.remove(index);
+                  _selectedTabHistory.add(index);
+                  selectedTabIndex = index;
+                }),
+                selectedIndex: selectedTabIndex,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
+  }
+
+  Widget _navigator(GlobalKey key, int index, Widget child) {
+    return key.currentState == null && selectedTabIndex != index
+        ? Container()
+        : Navigator(
+            key: key,
+            onGenerateRoute: (settings) => MaterialPageRoute(
+              builder: (context) => Offstage(
+                offstage: selectedTabIndex != index,
+                child: child,
+              ),
+            ),
+          );
   }
 }
 
