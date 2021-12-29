@@ -328,15 +328,15 @@ class _PostList extends StatelessWidget {
           itemExtent: 141,
           shrinkWrap: true,
           physics: const ClampingScrollPhysics(),
-          itemBuilder: (context, index) => _PostItem(post: _posts[index]),
+          itemBuilder: (context, index) => PostItem(post: _posts[index]),
         )
       ],
     );
   }
 }
 
-class _PostItem extends StatelessWidget {
-  const _PostItem({
+class PostItem extends StatelessWidget {
+  const PostItem({
     Key? key,
     required this.post,
   }) : super(key: key);
@@ -361,7 +361,10 @@ class _PostItem extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(16),
-            child: Image.asset('assets/img/posts/small/${post.imageFileName}'),
+            child: Image.asset(
+              'assets/img/posts/small/${post.imageFileName}',
+              width: 120,
+            ),
           ),
           Expanded(
             child: Padding(

@@ -1,5 +1,5 @@
-import 'package:blog_club/article.dart';
 import 'package:blog_club/gen/fonts.gen.dart';
+import 'package:blog_club/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -65,10 +65,11 @@ class MyApp extends StatelessWidget {
             fontSize: 18,
           ),
           subtitle2: TextStyle(
-              fontFamily: FontFamily.avenir,
-              color: primaryTextColor,
-              fontSize: 14,
-              fontWeight: FontWeight.w400),
+            fontFamily: FontFamily.avenir,
+            color: primaryTextColor,
+            fontSize: 14,
+            fontWeight: FontWeight.w400,
+          ),
           headline4: TextStyle(
             fontFamily: FontFamily.avenir,
             fontSize: 24,
@@ -87,10 +88,16 @@ class MyApp extends StatelessWidget {
             color: primaryTextColor,
             fontSize: 18,
           ),
+          bodyText1: TextStyle(
+            fontFamily: FontFamily.avenir,
+            color: primaryTextColor,
+            fontSize: 14,
+          ),
           bodyText2: TextStyle(
-              fontFamily: FontFamily.avenir,
-              color: secondaryTextColor,
-              fontSize: 12),
+            fontFamily: FontFamily.avenir,
+            color: secondaryTextColor,
+            fontSize: 12,
+          ),
         ),
       ),
       // home: Stack(
@@ -104,7 +111,7 @@ class MyApp extends StatelessWidget {
       //     ),
       //   ],
       // ),
-      home: ArticleScreen(),
+      home: ProfileScreen(),
     );
   }
 }
