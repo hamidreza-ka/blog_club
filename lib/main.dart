@@ -1,5 +1,9 @@
+import 'package:blog_club/article.dart';
 import 'package:blog_club/gen/fonts.gen.dart';
+import 'package:blog_club/home.dart';
 import 'package:blog_club/profile.dart';
+import 'package:blog_club/search.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -111,129 +115,204 @@ class MyApp extends StatelessWidget {
       //     ),
       //   ],
       // ),
-      home: ProfileScreen(),
+      home: MainScreeen(),
     );
   }
 }
 
-// class _BottomNavigation extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       height: 85,
-//       child: Stack(
-//         children: [
-//           Positioned(
-//             bottom: 0,
-//             left: 0,
-//             right: 0,
-//             child: Container(
-//               height: 65,
-//               decoration: BoxDecoration(
-//                 color: Colors.white,
-//                 boxShadow: [
-//                   BoxShadow(
-//                     blurRadius: 25,
-//                     color: Color(0xff9b8487).withOpacity(0.3),
-//                   ),
-//                 ],
-//               ),
-//               child: Row(
-//                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//                 children: const [
-//                   const _BottomNavigationItem(
-//                     iconFileName: 'Home.png',
-//                     activeIconFileName: 'Home.png',
-//                     title: 'Home',
-//                     isActive: false,
-//                   ),
-//                   const _BottomNavigationItem(
-//                     iconFileName: 'Articles.png',
-//                     activeIconFileName: 'Articles.png',
-//                     title: 'Articles',
-//                     isActive: false,
-//                   ),
-//                   SizedBox(
-//                     width: 8,
-//                   ),
-//                   const _BottomNavigationItem(
-//                     iconFileName: 'Search.png',
-//                     activeIconFileName: 'Search.png',
-//                     title: 'Search',
-//                     isActive: false,
-//                   ),
-//                   const _BottomNavigationItem(
-//                     iconFileName: 'Menu.png',
-//                     activeIconFileName: 'Menu.png',
-//                     title: 'Menu',
-//                     isActive: false,
-//                   ),
-//                 ],
-//               ),
-//             ),
-//           ),
-//           Center(
-//             child: Container(
-//               width: 65,
-//               height: 85,
-//               alignment: Alignment.topCenter,
-//               child: Container(
-//                 height: 65,
-//                 decoration: BoxDecoration(
-//                   borderRadius: BorderRadius.circular(32.5),
-//                   color: Color(0xff376aed),
-//                   border: Border.all(
-//                     color: Colors.white,
-//                     width: 4,
-//                   ),
-//                 ),
-//                 child: Container(
-//                   height: 65,
-//                   width: 65,
-//                   child: Icon(
-//                     CupertinoIcons.add,
-//                     size: 32,
-//                     color: Colors.white,
-//                   ),
-//                 ),
-//               ),
-//             ),
-//           )
-//         ],
-//       ),
-//     );
-//   }
-// }
+class MainScreeen extends StatefulWidget {
+  @override
+  State<MainScreeen> createState() => _MainScreeenState();
+}
 
-// class _BottomNavigationItem extends StatelessWidget {
-//   final String iconFileName;
-//   final String activeIconFileName;
-//   final String title;
-//   final bool isActive;
+const int homeIndex = 0;
+const int articleIndex = 1;
+const int searchIndex = 2;
+const int menuIndex = 3;
+const double bottomNavigationHeight = 65;
 
-//   const _BottomNavigationItem({
-//     Key? key,
-//     required this.iconFileName,
-//     required this.activeIconFileName,
-//     required this.title,
-//     required this.isActive,
-//   }) : super(key: key);
+class _MainScreeenState extends State<MainScreeen> {
+  int selectedTabIndex = homeIndex;
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Column(
-//       mainAxisAlignment: MainAxisAlignment.center,
-//       children: [
-//         Image.asset(
-//             'assets/img/icons/${isActive ? iconFileName : activeIconFileName}'),
-//         SizedBox(
-//           height: 4,
-//         ),
-//         Text(
-//           title,
-//           style: Theme.of(context).textTheme.caption,
-//         ),
-//       ],
-//     );
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Stack(
+        children: [
+          Positioned.fill(
+            bottom: bottomNavigationHeight,
+            child: IndexedStack(
+              index: selectedTabIndex,
+              children: [
+                HomeScreen(),
+                ArticleScreen(),
+                SearchScreen(),
+                ProfileScreen(),
+              ],
+            ),
+          ),
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: _BottomNavigation(
+              onItemTap: (index) => setState(() => selectedTabIndex = index),
+              selectedIndex: selectedTabIndex,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _BottomNavigation extends StatelessWidget {
+  final Function(int index) onItemTap;
+  final int selectedIndex;
+
+  const _BottomNavigation({
+    Key? key,
+    required this.onItemTap,
+    required this.selectedIndex,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 85,
+      child: Stack(
+        children: [
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: Container(
+              height: bottomNavigationHeight,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    blurRadius: 25,
+                    color: Color(0xff9b8487).withOpacity(0.3),
+                  ),
+                ],
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  _BottomNavigationItem(
+                    iconFileName: 'Home.png',
+                    activeIconFileName: 'Home.png',
+                    title: 'Home',
+                    isActive: selectedIndex == homeIndex,
+                    onTap: () => onItemTap(homeIndex),
+                  ),
+                  _BottomNavigationItem(
+                    iconFileName: 'Articles.png',
+                    activeIconFileName: 'Articles.png',
+                    title: 'Articles',
+                    isActive: selectedIndex == articleIndex,
+                    onTap: () => onItemTap(articleIndex),
+                  ),
+                  Expanded(
+                    child: Container(),
+                  ),
+                  _BottomNavigationItem(
+                    iconFileName: 'Search.png',
+                    activeIconFileName: 'Search.png',
+                    title: 'Search',
+                    isActive: selectedIndex == searchIndex,
+                    onTap: () => onItemTap(searchIndex),
+                  ),
+                  _BottomNavigationItem(
+                    iconFileName: 'Menu.png',
+                    activeIconFileName: 'Menu.png',
+                    title: 'Menu',
+                    isActive: selectedIndex == menuIndex,
+                    onTap: () => onItemTap(menuIndex),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Center(
+            child: Container(
+              width: 65,
+              height: 85,
+              alignment: Alignment.topCenter,
+              child: Container(
+                height: 65,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(32.5),
+                  color: Color(0xff376aed),
+                  border: Border.all(
+                    color: Colors.white,
+                    width: 4,
+                  ),
+                ),
+                child: Container(
+                  height: 65,
+                  width: 65,
+                  child: Icon(
+                    CupertinoIcons.add,
+                    size: 32,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _BottomNavigationItem extends StatelessWidget {
+  final String iconFileName;
+  final String activeIconFileName;
+  final String title;
+  final bool isActive;
+  final Function() onTap;
+
+  const _BottomNavigationItem({
+    Key? key,
+    required this.iconFileName,
+    required this.activeIconFileName,
+    required this.title,
+    required this.isActive,
+    required this.onTap,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData _themeData = Theme.of(context);
+
+    return Expanded(
+      child: InkWell(
+        onTap: onTap,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              'assets/img/icons/${isActive ? iconFileName : activeIconFileName}',
+              width: 24,
+              height: 24,
+            ),
+            SizedBox(
+              height: 4,
+            ),
+            Text(
+              title,
+              style: _themeData.textTheme.caption!.apply(
+                color: isActive
+                    ? _themeData.colorScheme.primary
+                    : _themeData.textTheme.caption!.color,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
